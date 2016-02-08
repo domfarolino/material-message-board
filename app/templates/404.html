@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}
+404
+{% endblock %}
+
+<!-- 404 from http://codepen.io/hakimel/pen/vfykn -->
+
+{% block main %}
+
+<h1 class="md-display-2 middle">404</h1>
+<h2 class="md-display-1 middle">Well, this is embarrassing. We can't find what you're looking for...</h2>
+<div class="fof">
+  <canvas></canvas>
+</div>
+
+
+<style>
+  body {
+  background: #ececec;
+  overflow: hidden;
+}
+
+.fof {
+  margin: 10px 0;
+}
+
+.fof canvas,
+.fof img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 20px;
+  z-index: 1;
+  background: #ececec;
+}
+</style>
+{% endblock %}

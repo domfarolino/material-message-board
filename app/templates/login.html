@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div ng-controller="LoginController">
+  <h1 class="middle">Login</h1>
+
+  {% raw %}
+  <div id="loginLinks">
+      <div class="padding-medium middle" flex="33">
+        <md-button ng-click="redirect('/authorize/facebook')" class="md-raised md-primary padding-medium" flex="50">
+            <md-icon class="padding-light" md-svg-icon="facebook"></md-icon>Click to log with Facebook
+        </md-button>
+      </div>
+      <div class="padding-medium middle" flex="33">
+        <md-button ng-click="redirect('/authorize/google')" class="md-raised md-primary padding-medium" flex="50">
+            <md-icon class="padding-light" md-svg-icon="google"></md-icon>Click to log with Google
+        </md-button>
+      </div>
+      <div class="padding-medium middle" flex="33">
+        <md-button ng-click="redirect('/authorize/twitter')" class="md-raised md-primary padding-medium" flex="50">
+            <md-icon class="padding-light" md-svg-icon="twitter"></md-icon>Click to log with Twitter
+        </md-button>
+      </div>
+  </div>
+  {% endraw %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div ng-controller="MessagesController">
+  <h1 class="middle">Material Message Board</h1>
+
+  {% raw %}
+  <!--{{selected}}-->
+  <div id="chat-box" style="height:300px;overflow-y:scroll;">
+    <div ng-repeat="message in messages" class="padding-medium box-sizing" ng-init="messageInit(message.author)" ng-cloak>
+      <md-checkbox class="md-primary" ng-click="toggle(message.id, selected)" ng-model="exists(message.id, selected)" aria-label="Select Message"></md-checkbox>
+      <img style="width:50px;height:50px;vertical-align:middle;" class="round-face" ng-src="{{authorData[message.author].profile_picture}}" alt="(Picture)">
+      <h4 style="display:inline-block;"><b>{{authorData[message.author].name}} ({{authorData[message.author].username}})</b></h4>
+      <p style="display:inline-block;">{{message.message}}</p>
+      <p style="display:inline-block;">{{message.time | timestampToDate}}</p>
+    </div>
+  </div>
+  {% endraw %}
+
+  <div id="controls">
+    <div id="upper-row" layout layout-padding layout-xs="column">
+      <div class="padding-medium middle" flex="50" flex-xs="100">
+        <md-button ng-click="intervalFunction()" class="md-raised md-primary" flex="33">
+          <md-icon md-svg-icon="refresh"></md-icon>Reload Messages
+        </md-button>
+      </div>
+      <div class="padding-medium middle" flex="50" flex-xs="100">
+        <md-button ng-click="deleteMessages()" class="md-raised md-warn" flex="33">
+          <md-icon md-svg-icon="clear"></md-icon>Delete Messages
+        </md-button>
+      </div>
+    </div>
+
+    <form name="addmsgform" ng-submit="addMessage()">
+      <div class="padding-medium middle" flex="33">
+        <md-input-container>
+          <label>Message</label>
+          <input autocomplete="off" required name="message" ng-model="msgmsg">
+          <div ng-messages="projectForm.clientName.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+      </div>
+
+      <div class="padding-medium middle" flex="33">
+        <md-button type="submit" class="md-primary md-raised" flex="33">
+          <md-icon md-svg-icon="add"></md-icon>Send
+        </md-button>
+      </div>
+    </form>
+
+    <div class="padding-medium middle" flex="33">
+      <md-checkbox style="display:inline-block;" class="md-primary" ng-model="autoUpdateCheck" ng-true-value="true" ng-false-value="false">
+        Update Messages Automatically (check box & click reload messages)
+      </md-checkbox>
+    </div>
+  </div>
+
+  <md-checkbox class="md-primary" ng-click="toggleAll()" ng-model="returnAllSelected()" ng-disabled="returnMessagesEmpty()">
+  Select/Unselect All
+  </md-checkbox>
+
+</div>
+
+{% endblock %}
