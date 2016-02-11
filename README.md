@@ -1,6 +1,7 @@
 # material-message-board
 
 ## [Demo Me!](https://material-message-board.herokuapp.com)
+By the way: if you get internal server errors trying to login its godaddy's fault
 
 This is a basic flask application that utilizes the features listed below to make an OAuth public message board.
 
