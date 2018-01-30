@@ -164,3 +164,7 @@ md-icon#tool-bar-profile {
     height: 40px;
     padding: 0px;
 }
+
+canvas {
+  background: #fff !important;
+}
